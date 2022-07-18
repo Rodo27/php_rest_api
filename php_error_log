@@ -1,2 +1,80 @@
 [17-Jul-2022 21:11:40 Europe/Berlin] PHP Warning:  Undefined array key "estatus" in C:\xampp\htdocs\php_rest_api\routes\routes.php on line 17
 [17-Jul-2022 21:11:47 Europe/Berlin] PHP Warning:  Undefined array key "estatus" in C:\xampp\htdocs\php_rest_api\routes\routes.php on line 17
+[18-Jul-2022 08:35:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "GetController" not found in C:\xampp\htdocs\php_rest_api\routes\services\get.php:3
+Stack trace:
+#0 C:\xampp\htdocs\php_rest_api\routes\routes.php(24): include()
+#1 C:\xampp\htdocs\php_rest_api\controllers\routes.controller.php(8): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\php_rest_api\index.php(20): RoutesController->index()
+#3 {main}
+  thrown in C:\xampp\htdocs\php_rest_api\routes\services\get.php on line 3
+[18-Jul-2022 08:36:32 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function GetController::getData(), 0 passed in C:\xampp\htdocs\php_rest_api\routes\services\get.php on line 5 and exactly 1 expected in C:\xampp\htdocs\php_rest_api\controllers\get_controller.php:4
+Stack trace:
+#0 C:\xampp\htdocs\php_rest_api\routes\services\get.php(5): GetController::getData()
+#1 C:\xampp\htdocs\php_rest_api\routes\routes.php(24): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\php_rest_api\controllers\routes.controller.php(8): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\php_rest_api\index.php(20): RoutesController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\php_rest_api\controllers\get_controller.php on line 4
+[18-Jul-2022 08:37:22 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function GetController::getData(), 0 passed in C:\xampp\htdocs\php_rest_api\routes\services\get.php on line 5 and exactly 1 expected in C:\xampp\htdocs\php_rest_api\controllers\get_controller.php:6
+Stack trace:
+#0 C:\xampp\htdocs\php_rest_api\routes\services\get.php(5): GetController::getData()
+#1 C:\xampp\htdocs\php_rest_api\routes\routes.php(24): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\php_rest_api\controllers\routes.controller.php(8): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\php_rest_api\index.php(20): RoutesController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\php_rest_api\controllers\get_controller.php on line 6
+[18-Jul-2022 08:37:59 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'database_1.controller' doesn't exist in C:\xampp\htdocs\php_rest_api\models\get.model.php:9
+Stack trace:
+#0 C:\xampp\htdocs\php_rest_api\models\get.model.php(9): PDOStatement->execute()
+#1 C:\xampp\htdocs\php_rest_api\controllers\get_controller.php(8): GetModel::getData('controller')
+#2 C:\xampp\htdocs\php_rest_api\routes\services\get.php(5): GetController::getData('controller')
+#3 C:\xampp\htdocs\php_rest_api\routes\routes.php(24): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\php_rest_api\controllers\routes.controller.php(8): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\php_rest_api\index.php(20): RoutesController->index()
+#6 {main}
+  thrown in C:\xampp\htdocs\php_rest_api\models\get.model.php on line 9
+[18-Jul-2022 08:38:25 Europe/Berlin] PHP Fatal error:  Uncaught Error: Undefined constant "FETCH_CLASS" in C:\xampp\htdocs\php_rest_api\models\get.model.php:10
+Stack trace:
+#0 C:\xampp\htdocs\php_rest_api\controllers\get_controller.php(8): GetModel::getData('courses')
+#1 C:\xampp\htdocs\php_rest_api\routes\services\get.php(5): GetController::getData('courses')
+#2 C:\xampp\htdocs\php_rest_api\routes\routes.php(24): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\php_rest_api\controllers\routes.controller.php(8): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\php_rest_api\index.php(20): RoutesController->index()
+#5 {main}
+  thrown in C:\xampp\htdocs\php_rest_api\models\get.model.php on line 10
+[18-Jul-2022 09:06:40 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function GetController::getData(), 0 passed in C:\xampp\htdocs\php_rest_api\routes\services\get.php on line 6 and exactly 1 expected in C:\xampp\htdocs\php_rest_api\controllers\get_controller.php:6
+Stack trace:
+#0 C:\xampp\htdocs\php_rest_api\routes\services\get.php(6): GetController::getData()
+#1 C:\xampp\htdocs\php_rest_api\routes\routes.php(24): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\php_rest_api\controllers\routes.controller.php(8): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\php_rest_api\index.php(20): RoutesController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\php_rest_api\controllers\get_controller.php on line 6
+[18-Jul-2022 09:18:38 Europe/Berlin] PHP Fatal error:  Uncaught Error: Using $this when not in object context in C:\xampp\htdocs\php_rest_api\controllers\get_controller.php:9
+Stack trace:
+#0 C:\xampp\htdocs\php_rest_api\routes\services\get.php(5): GetController::getData('tutors')
+#1 C:\xampp\htdocs\php_rest_api\routes\routes.php(24): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\php_rest_api\controllers\routes.controller.php(8): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\php_rest_api\index.php(20): RoutesController->index()
+#4 {main}
+  thrown in C:\xampp\htdocs\php_rest_api\controllers\get_controller.php on line 9
+[18-Jul-2022 11:15:09 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'title' in 'where clause' in C:\xampp\htdocs\php_rest_api\models\get.model.php:38
+Stack trace:
+#0 C:\xampp\htdocs\php_rest_api\models\get.model.php(38): PDOStatement->execute()
+#1 C:\xampp\htdocs\php_rest_api\controllers\get_controller.php(15): GetModel::getDataFilter('courses', 'title_course,de...', 'id_instructor_c...', '1_Python')
+#2 C:\xampp\htdocs\php_rest_api\routes\services\get.php(16): GetController->getDataFilter('courses', 'title_course,de...', 'id_instructor_c...', '1_Python')
+#3 C:\xampp\htdocs\php_rest_api\routes\routes.php(24): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\php_rest_api\controllers\routes.controller.php(8): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\php_rest_api\index.php(20): RoutesController->index()
+#6 {main}
+  thrown in C:\xampp\htdocs\php_rest_api\models\get.model.php on line 38
+[18-Jul-2022 11:33:43 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '14.99'' at line 1 in C:\xampp\htdocs\php_rest_api\models\get.model.php:40
+Stack trace:
+#0 C:\xampp\htdocs\php_rest_api\models\get.model.php(40): PDOStatement->execute()
+#1 C:\xampp\htdocs\php_rest_api\controllers\get_controller.php(15): GetModel::getDataFilter('courses', 'id_instructor_c...', 'price_course', '14.99')
+#2 C:\xampp\htdocs\php_rest_api\routes\services\get.php(16): GetController->getDataFilter('courses', 'id_instructor_c...', 'price_course', '14.99')
+#3 C:\xampp\htdocs\php_rest_api\routes\routes.php(24): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\php_rest_api\controllers\routes.controller.php(8): include('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\php_rest_api\index.php(20): RoutesController->index()
+#6 {main}
+  thrown in C:\xampp\htdocs\php_rest_api\models\get.model.php on line 40

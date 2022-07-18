@@ -21,7 +21,8 @@ if(count($routesArray) > 1 && isset($_SERVER['REQUEST_METHOD'])){
 
     switch ($_SERVER['REQUEST_METHOD']) {
         case 'GET':
-            $json['result'] = 'Request ' . $_SERVER['REQUEST_METHOD'];
+            include "services/get.php";
+            //$json['result'] = 'Request ' . $_SERVER['REQUEST_METHOD'];
             break;
     
         case 'POST':
@@ -41,5 +42,5 @@ if(count($routesArray) > 1 && isset($_SERVER['REQUEST_METHOD'])){
             break;
     }
 
-    echo json_encode($json,http_response_code($json["status"]));   
+    //echo json_encode($json,http_response_code($json["status"]));   
 }

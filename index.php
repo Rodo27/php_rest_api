@@ -11,10 +11,8 @@
     require_once "models/connection.php";
 
     
-    print_r(Connection::connect());
-
-
-    return;
+    //print_r(Connection::connect());
+    //return;
 
     require_once "controllers/routes.controller.php";
 
