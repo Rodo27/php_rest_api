@@ -3,11 +3,40 @@
 
     class GetModel{
 
+
+        /* Search Reuests */
+
+        static public function getDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
+
+            $sql = "SELECT $select FROM $table WHERE $linkTo LIKE '%$search%' "; // default sentence
+
+            // order by but not limit
+            if(isset($orderBy) && isset($orderMode) && !isset($startAt) && !isset($endAt))
+                $sql = "SELECT $select FROM $table WHERE $linkTo LIKE '%$search%' ORDER BY $orderBy $orderMode";
+
+            // order by and limit
+            if(isset($orderBy) && isset($orderMode) && isset($startAt) && isset($endAt))
+                $sql = "SELECT $select FROM $table WHERE $linkTo LIKE '%$search%' ORDER BY $orderBy $orderMode LIMIT $startAt, $endAt";
+
+            // only limit
+            if(!isset($orderBy) && !isset($orderMode) && isset($startAt) && isset($endAt))
+                $sql = "SELECT $select FROM $table WHERE $linkTo LIKE '%$search%' LIMIT $startAt, $endAt";
+            
+            //print_r($message);
+            //return;
+            $stmt =  Connection::connect()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_CLASS); // if you need indexes remove PDO::FETCH CLASS 
+
+        }
+
+
+        /* Request Functions */
+
         static public function getData($table, $select, $orderBy, $orderMode, $startAt, $endAt){
             
-            $sql = "SELECT $select FROM $table";
-
-                
+            $sql = "SELECT $select FROM $table"; // default sentence
+  
             // order by but not limit
             if(isset($orderBy) && isset($orderMode) && !isset($startAt) && !isset($endAt))
                 $sql = "SELECT $select FROM $table ORDER BY $orderBy $orderMode";
@@ -42,7 +71,7 @@
                 }
             }
 
-            $sql = "SELECT $select FROM $table WHERE $linkToArray[0] = :$linkToArray[0] $linkToString";
+            $sql = "SELECT $select FROM $table WHERE $linkToArray[0] = :$linkToArray[0] $linkToString"; // default sentence
 
             // order by but not limit
             if(isset($orderBy) && isset($orderMode) && !isset($startAt) && !isset($endAt))
@@ -66,7 +95,7 @@
         }
 
 
-        /* Relations  */
+        /* Relation Requests */
 
         static public function getRelationData($relation, $type, $select, $orderBy, $orderMode, $startAt, $endAt){
             
@@ -81,7 +110,7 @@
                 }
             }
 
-            $sql = "SELECT $select FROM  $relationArray[0] $innerJoinString";
+            $sql = "SELECT $select FROM  $relationArray[0] $innerJoinString"; // default sentence
 
             if(isset($orderBy) && isset($orderMode) && !isset($startAt) && !isset($endAt))
                 $sql = "SELECT $select FROM  $relationArray[0] $innerJoinString ORDER By $orderBy $orderMode";
@@ -100,7 +129,7 @@
 
         static public function getRelationDataFilter($relation, $type, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt, $endAt){
 
-            // Filters
+            // Filters Operations
             
             $linkToArray = explode(",",$linkTo);
             $equalToArray = explode("_",$equalTo);
@@ -114,7 +143,7 @@
                 }
             }
 
-            // Relations
+            // Relation Operations
 
             $relationArray = explode(",", $relation);
             $typeArray =  explode(",", $type);
@@ -128,7 +157,7 @@
                 }
             }
 
-            $sql = "SELECT $select FROM  $relationArray[0] $innerJoinString WHERE $linkToArray[0] = :$linkToArray[0] $linkToString";
+            $sql = "SELECT $select FROM  $relationArray[0] $innerJoinString WHERE $linkToArray[0] = :$linkToArray[0] $linkToString"; // default sentence
 
             if(isset($orderBy) && isset($orderMode) && !isset($startAt) && !isset($endAt))
                 $sql = "SELECT $select FROM  $relationArray[0] $innerJoinString WHERE $linkToArray[0] = :$linkToArray[0] $linkToString ORDER By $orderBy $orderMode";

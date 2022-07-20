@@ -1,5 +1,5 @@
 <?php
-    require_once "controllers/get_controller.php";
+    require_once "controllers/get.controller.php";
 
     $table = explode("?", $routesArray[2])[0];
 
@@ -11,32 +11,33 @@
     
     $response = new GetController();
 
-    //$linkTo = isset($_GET["linkTo"]) ? $_GET["linkTo"] : false;
-    //$equalTo = isset($_GET["equalTo"]) ? $_GET["equalTo"] : false;
-    //if($linkTo && $equalTo)
 
-    /* Filters Request */
+    /* Request Types */
     
     if($table != "relations"){
+
         if(isset($_GET["linkTo"]) && isset($_GET["equalTo"]))
-            $response->getDataFilter($table, $select, $_GET["linkTo"], $_GET["equalTo"], $orderBy, $orderMode, $startAt, $endAt);    
+            $response->getDataFilter($table, $select, $_GET["linkTo"], $_GET["equalTo"], $orderBy, $orderMode, $startAt, $endAt);
+        
+        // Search Request
+        if(isset($_GET["linkTo"]) && isset($_GET["search"]))
+            $response->getDataSearch($table, $select, $_GET["linkTo"], $_GET["search"], $orderBy, $orderMode, $startAt, $endAt);
+
         else
             $response->getData($table, $select, $orderBy, $orderMode, $startAt, $endAt);
-    }else{
-        if(isset($_GET["rel"]) && isset($_GET["type"]) && $table == "relations" && !isset($_GET["linkTo"]) && !isset($_GET["equalTo"]))
+
+        
+    }else{  /* Relations Request*/
+
+
+        if(isset($_GET["rel"]) && isset($_GET["type"]) && $table == "relations" && !isset($_GET["linkTo"]) && !isset($_GET["equalTo"]))  
             $response->getRelationData($_GET["rel"], $_GET["type"], $select, $orderBy, $orderMode, $startAt, $endAt);
-        /*
+
         if(isset($_GET["rel"]) && isset($_GET["type"]) && $table == "relations" && isset($_GET["linkTo"]) && isset($_GET["equalTo"]))
-            //echo "papaya";
             $response->getRelationDataFilter($_GET["rel"], $_GET["type"], $select, $_GET["linkTo"], $_GET["equalTo"], $orderBy, $orderMode, $startAt, $endAt);
-        */
-            //else 
-        //    echo "papaya";
+       
     }
 
     
 
-    /* Relations Request*/
-
-    // Relation without filters
     

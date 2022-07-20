@@ -22,11 +22,10 @@ if(count($routesArray) > 1 && isset($_SERVER['REQUEST_METHOD'])){
     switch ($_SERVER['REQUEST_METHOD']) {
         case 'GET':
             include "services/get.php";
-            //$json['result'] = 'Request ' . $_SERVER['REQUEST_METHOD'];
             break;
     
         case 'POST':
-            $json['result'] = 'Request ' . $_SERVER['REQUEST_METHOD'];
+            include "services/post.php";
             break;  
             
         case 'PUT':
