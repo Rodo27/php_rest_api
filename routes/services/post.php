@@ -11,7 +11,7 @@
 
         $response = new PostController();
         $response->postData($table,$_POST);
-        echo json_encode($response);
+        //echo json_encode($response);
 
     }
         //echo json_encode($_POST);
