@@ -29,7 +29,10 @@ if(count($routesArray) > 1 && isset($_SERVER['REQUEST_METHOD'])){
             break;  
             
         case 'PUT':
-            $json['result'] = 'Request ' . $_SERVER['REQUEST_METHOD'];
+            include "services/put.php";
+            //$json['result'] = 'Request ' . $_SERVER['REQUEST_METHOD'];
+            //echo json_encode($json);
+            //return;
             break;
 
         case 'DELETE':
