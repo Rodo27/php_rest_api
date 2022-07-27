@@ -36,7 +36,9 @@ if(count($routesArray) > 1 && isset($_SERVER['REQUEST_METHOD'])){
             break;
 
         case 'DELETE':
-            $json['result'] = 'Request ' . $_SERVER['REQUEST_METHOD'];
+            //echo "DELETE SERVICE";
+            include "services/delete.php";
+            //$json['result'] = 'Request ' . $_SERVER['REQUEST_METHOD'];
             break;
         
         default:

@@ -16,7 +16,6 @@
             echo json_encode($json,http_response_code($json["status"]));
         }
 
-
         /* Search */
 
         public function getDataSearch($table, $select, $linkTo, $search, $orderBy, $orderMode, $startAt, $endAt){
