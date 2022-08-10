@@ -1,5 +1,7 @@
 <?php
 
+    require_once "models/get.model.php";
+
     class Connection{
         /* Database information */
 
@@ -30,4 +32,43 @@
 
             return $link;
         }
+
+        /* Generate Token JWT */
+
+        static public function jwt($id, $email){
+            
+            $time = time();
+            
+            $token = array(
+                "iat" =>  $time, // init token date
+                "exp" => $time + (60*60*24), // date to expire token 
+                "data" => [
+                    "id" => $id,
+                    "email" => $email
+                ]
+            
+            );
+
+            return $token;
+        }
+
+        /* Validated Token */
+
+        static public function tokenValidate($token, $table, $suffix){
+
+            // validate with token
+            $result = GetModel::getDataFilter($table, "token_exp_".$suffix, "token_".$suffix, $token, null, null, null, null);
+            
+            if(!empty($result)){
+
+                $time = time();  //get current time
+                $result = $result[0];
+
+                return ($time < $result->{"token_exp_".$suffix}) ? "active" : "expired";
+            }else
+                return "token invalid";
+            
+
+        }
+
     }

@@ -60,7 +60,7 @@
         static public function getDataFilter($table, $select, $linkTo, $equalTo, $orderBy, $orderMode, $startAt, $endAt){
 
             $linkToArray = explode(",",$linkTo);
-            $equalToArray = explode("_",$equalTo);
+            $equalToArray = explode(",",$equalTo);
 
             $linkToString = "";
            
